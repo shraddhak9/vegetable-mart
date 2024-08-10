@@ -15,6 +15,9 @@ import jakarta.persistence.Table;
 @Table(name = "cartItem")
 public class CartItem extends BaseEntity{
 	private int quantity;
+
+
+
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Product product;
