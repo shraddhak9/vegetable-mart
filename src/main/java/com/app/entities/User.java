@@ -1,12 +1,14 @@
 package com.app.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Table;
 
-@MappedSuperclass
+@Entity
+@Table(name="User")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +23,15 @@ public class User {
 	private String firstName;
 	@Column(length = 20,nullable = false,name = "last_name")
 	private String lastName;
-	@Column(length = 13,nullable = false)
+	@Column(length = 13,nullable = false,name = "phone")
+	
 	private String phone;
 	
 	@Column(name ="is_deleted")
 	private boolean isDeleted;
 	
+	@Column(length = 30,nullable = false,name ="role")
+	private String role;
 	
 	public long getid() {
 		return id;
@@ -83,6 +88,14 @@ public class User {
 
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	
